@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Jumia Careers | Application Portal</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f6fa;
+      font-family: 'Inter', sans-serif;
+      color: #1e2a41;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* jumia brand colors */
+    :root {
+      --jumia-orange: #f68b1e;
+      --jumia-orange-dark: #e07a0e;
+      --jumia-blue: #0b2c5c;
+      --jumia-blue-light: #1e3b6b;
+      --gray-bg: #f9fbfd;
+      --card-white: #ffffff;
+      --border-light: #e2e8f0;
+      --text-muted: #5e6f8c;
+      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 4px 8px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 20px 30px -10px rgba(0, 0, 0, 0.08), 0 8px 15px -6px rgba(0, 0, 0, 0.02);
+      --radius-card: 24px;
+      --radius-sm: 12px;
+      --transition: all 0.2s ease;
+    }
+
+    /* header / nav */
+    .navbar {
+      background: var(--card-white);
+      box-shadow: var(--shadow-sm);
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      border-bottom: 3px solid var(--jumia-orange);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-icon {
+      background: var(--jumia-orange);
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.7rem;
+      font-weight: 700;
+      box-shadow: 0 6px 12px rgba(246, 139, 30, 0.25);
+    }
+
+    .logo-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      color: var(--jumia-blue);
+    }
+
+    .logo-text span {
+      color: var(--jumia-orange);
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--jumia-orange);
+    }
+
+    .nav-cta {
+      background: var(--jumia-blue);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 10px rgba(11, 44, 92, 0.15);
+    }
+
+    .nav-cta i {
+      font-size: 0.9rem;
+    }
+
+    .nav-cta:hover {
+      background: var(--jumia-orange);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px rgba(246, 139, 30, 0.25);
+    }
+
+    /* main container */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 1.8rem 1.2rem 2.5rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* hero / intro */
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .badge {
+      background: rgba(246, 139, 30, 0.12);
+      color: var(--jumia-orange-dark);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      width: fit-content;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(246, 139, 30, 0.3);
+    }
+
+    .hero-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--jumia-blue);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-top: 0.3rem;
+    }
+
+    .hero-title span {
+      color: var(--jumia-orange);
+      border-bottom: 3px solid rgba(246, 139, 30, 0.3);
+    }
+
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 600px;
+      margin-top: 0.3rem;
+    }
+
+    /* job cards grid */
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .job-card {
+      background: var(--card-white);
+      border-radius: var(--radius-card);
+      padding: 1.4rem 1.3rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .job-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: rgba(246, 139, 30, 0.35);
+      transform: translateY(-4px);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .job-icon {
+      background: rgba(11, 44, 92, 0.04);
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--jumia-orange);
+      border: 1px solid rgba(246, 139, 30, 0.2);
+    }
+
+    .job-badge {
+      background: #eef2ff;
+      color: var(--jumia-blue);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.8rem;
+      border-radius: 20px;
+      border: 1px solid #d9e2f0;
+    }
+
+    .job-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--jumia-blue);
+      margin-top: 0.2rem;
+    }
+
+    .job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .job-meta i {
+      color: var(--jumia-orange);
+      width: 16px;
+      margin-right: 4px;
+    }
+
+    .job-desc {
+      font-size: 0.9rem;
+      color: #2d3e5e;
+      opacity: 0.85;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .apply-btn {
+      background: transparent;
+      border: 2px solid var(--jumia-orange);
+      color: var(--jumia-orange);
+      padding: 0.7rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.2px;
+    }
+
+    .apply-btn i {
+      font-size: 0.9rem;
+    }
+
+    .apply-btn:hover {
+      background: var(--jumia-orange);
+      color: white;
+      box-shadow: 0 8px 18px rgba(246, 139, 30, 0.25);
+    }
+
+    /* payment & form section (modal-like card) */
+    .form-card {
+      background: var(--card-white);
+      border-radius: var(--radius-card);
+      padding: 2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+      margin-top: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .form-card h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--jumia-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .form-card h2 i {
+      color: var(--jumia-orange);
+    }
+
+    .form-card .subhead {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+      border-left: 3px solid var(--jumia-orange);
+      padding-left: 1rem;
+      background: #fef9f2;
+      border-radius: 0 8px 8px 0;
+      padding: 0.7rem 1rem;
+      font-weight: 500;
+    }
+
+    .payment-highlight {
+      background: #fff7ed;
+      border: 1px dashed var(--jumia-orange);
+      border-radius: var(--radius-sm);
+      padding: 1.1rem 1.3rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .payment-amount {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .payment-amount .dollar-sign {
+      background: var(--jumia-orange);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .payment-amount div p:first-child {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .payment-amount .amount {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--jumia-blue);
+      line-height: 1.2;
+    }
+
+    .payment-amount .amount small {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .payment-destination {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: white;
+      padding: 0.7rem 1.2rem;
+      border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      border: 1px solid var(--border-light);
+    }
+
+    .payment-destination i {
+      color: var(--jumia-orange);
+      font-size: 1.2rem;
+    }
+
+    .payment-destination .number {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      color: var(--jumia-blue);
+    }
+
+    .payment-destination .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* form fields */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .input-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--jumia-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .input-group label i {
+      color: var(--jumia-orange);
+      font-size: 0.8rem;
+    }
+
+    .input-group input,
+    .input-group select {
+      padding: 0.85rem 1rem;
+      border-radius: 14px;
+      border: 1.5px solid #dde3ed;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      background: #ffffff;
+      width: 100%;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus {
+      outline: none;
+      border-color: var(--jumia-orange);
+      box-shadow: 0 0 0 4px rgba(246, 139, 30, 0.1);
+    }
+
+    .input-group input::placeholder {
+      color: #a7b4c9;
+      font-weight: 400;
+    }
+
+    .payment-proof-note {
+      background: #f0f4fe;
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.85rem;
+      color: var(--jumia-blue);
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      margin: 1rem 0 1.6rem;
+    }
+
+    .payment-proof-note i {
+      color: var(--jumia-orange);
+      font-size: 1.1rem;
+      margin-top: 0.1rem;
+    }
+
+    .submit-btn {
+      background: var(--jumia-orange);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 12px 20px -8px rgba(246, 139, 30, 0.4);
+      letter-spacing: 0.3px;
+    }
+
+    .submit-btn i {
+      font-size: 1rem;
+    }
+
+    .submit-btn:hover {
+      background: var(--jumia-orange-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 28px -8px rgba(246, 139, 30, 0.5);
+    }
+
+    .submit-btn:disabled {
+      background: #cbd5e1;
+      box-shadow: none;
+      transform: none;
+      cursor: not-allowed;
+      color: #64748b;
+    }
+
+    /* toast feedback */
+    .toast-message {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--jumia-blue);
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: all 0.25s ease;
+      z-index: 1000;
+      text-align: center;
+      max-width: 90vw;
+      border-left: 6px solid var(--jumia-orange);
+      pointer-events: none;
+    }
+
+    .toast-message.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* footer */
+    .footer {
+      text-align: center;
+      padding: 1.5rem 1.2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-light);
+      background: white;
+      margin-top: auto;
+    }
+
+    .footer i {
+      color: var(--jumia-orange);
+      margin: 0 0.2rem;
+    }
+
+    /* desktop improvements */
+    @media (min-width: 640px) {
+      .container {
+        padding: 2rem 2rem 3rem;
+      }
+
+      .hero-title {
+        font-size: 2.6rem;
+      }
+
+      .jobs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .full-width {
+        grid-column: span 2;
+      }
+
+      .payment-highlight {
+        padding: 1.2rem 1.8rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .jobs-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .form-card {
+        padding: 2.5rem 2.8rem;
+      }
+
+      .form-grid {
+        gap: 1.5rem;
+      }
+
+      .submit-btn {
+        width: auto;
+        padding: 1rem 3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 0.7rem 1rem;
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.4rem;
+      }
+
+      .logo-text {
+        font-size: 1.2rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .payment-highlight {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .form-card {
+        padding: 1.5rem 1rem;
+      }
+    }
+
+    /* back to top / smooth */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* required field style */
+    .required-star {
+      color: #e53e3e;
+      margin-left: 2px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <header class="navbar">
+    <div class="logo-area">
+      <div class="logo-icon">
+        <i class="fas fa-shopping-bag"></i>
+      </div>
+      <div class="logo-text">Jumia<span>careers</span></div>
+    </div>
+    <div class="nav-links">
+      <a href="#">Jobs</a>
+      <a href="#">Companies</a>
+      <a href="#">About</a>
+    </div>
+    <a href="#application-form" class="nav-cta">
+      <i class="fas fa-briefcase"></i> Apply now
+    </a>
+  </header>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="container">
+
+    <!-- Hero text -->
+    <section class="hero-section">
+      <div class="badge"><i class="fas fa-bolt" style="margin-right: 6px;"></i> Paid application – secure your spot</div>
+      <h1 class="hero-title">Build your career at <span>Jumia</span></h1>
+      <p class="hero-sub">Explore open roles and apply. A one-time application fee of <strong>$20</strong> applies to complete your submission.</p>
+    </section>
+
+    <!-- Job listing cards (static demo) -->
+    <div class="jobs-grid">
+      <!-- card 1 -->
+      <div class="job-card">
+        <div class="job-header">
+          <div class="job-icon"><i class="fas fa-chart-line"></i></div>
+          <span class="job-badge">Full-time</span>
+        </div>
+        <h3 class="job-title">Data Analyst</h3>
+        <div class="job-meta">
+          <span><i class="fas fa-map-pin"></i> Lagos, NG</span>
+          <span><i class="fas fa-clock"></i> 3+ years</span>
+        </div>
+        <p class="job-desc">Drive insights from e-commerce data. Advanced SQL, Excel, and dashboarding skills required.</p>
+        <button class="apply-btn" data-job="Data Analyst"><i class="fas fa-pen"></i> Apply now</button>
+      </div>
+      <!-- card 2 -->
+      <div class="job-card">
+        <div class="job-header">
+          <div class="job-icon"><i class="fas fa-laptop-code"></i></div>
+          <span class="job-badge">Remote</span>
+        </div>
+        <h3 class="job-title">Frontend Developer</h3>
+        <div class="job-meta">
+          <span><i class="fas fa-map-pin"></i> Remote</span>
+          <span><i class="fas fa-clock"></i> Mid-level</span>
+        </div>
+        <p class="job-desc">Build responsive UIs with React and modern CSS. Work with a pan-African team.</p>
+        <button class="apply-btn" data-job="Frontend Developer"><i class="fas fa-pen"></i> Apply now</button>
+      </div>
+      <!-- card 3 -->
+      <div class="job-card">
+        <div class="job-header">
+          <div class="job-icon"><i class="fas fa-truck"></i></div>
+          <span class="job-badge">Full-time</span>
+        </div>
+        <h3 class="job-title">Logistics Coordinator</h3>
+        <div class="job-meta">
+          <span><i class="fas fa-map-pin"></i> Nairobi, KE</span>
+          <span><i class="fas fa-clock"></i> 2+ years</span>
+        </div>
+        <p class="job-desc">Optimize delivery routes and manage vendor relationships. Supply chain experience preferred.</p>
+        <button class="apply-btn" data-job="Logistics Coordinator"><i class="fas fa-pen"></i> Apply now</button>
+      </div>
+    </div>
+
+    <!-- APPLICATION FORM + PAYMENT -->
+    <section id="application-form">
+      <div class="form-card">
+        <h2><i class="fas fa-file-signature"></i> Job application</h2>
+        <div class="subhead">
+          <i class="fas fa-shield-alt" style="margin-right: 8px;"></i> 
+          Complete the form and pay the $20 application fee to submit.
+        </div>
+
+        <!-- payment info block (static) -->
+        <div class="payment-highlight">
+          <div class="payment-amount">
+            <div class="dollar-sign">$</div>
+            <div>
+              <p>Application fee</p>
+              <div class="amount">20 <small>USD</small></div>
+            </div>
+          </div>
+          <div class="payment-destination">
+            <i class="fas fa-mobile-alt"></i>
+            <div>
+              <div class="label">Pay to (Mobile money)</div>
+              <div class="number">0758036006</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- actual form -->
+        <form id="jobApplicationForm">
+          <div class="form-grid">
+            <div class="input-group">
+              <label><i class="fas fa-user"></i> Full name <span class="required-star">*</span></label>
+              <input type="text" id="fullName" placeholder="e.g. John Adeyemi" required>
+            </div>
+            <div class="input-group">
+              <label><i class="fas fa-envelope"></i> Email <span class="required-star">*</span></label>
+              <input type="email" id="email" placeholder="john@example.com" required>
+            </div>
+            <div class="input-group">
+              <label><i class="fas fa-phone-alt"></i> Phone number <span class="required-star">*</span></label>
+              <input type="tel" id="phone" placeholder="e.g. 0758036006" required>
+            </div>
+            <div class="input-group">
+              <label><i class="fas fa-briefcase"></i> Position applied for <span class="required-star">*</span></label>
+              <select id="jobPosition" required>
+                <option value="" disabled selected>Select a role</option>
+                <option value="Data Analyst">Data Analyst</option>
+                <option value="Frontend Developer">Frontend Developer</option>
+                <option value="Logistics Coordinator">Logistics Coordinator</option>
+                <option value="Other">Other (specify in cover letter)</option>
+              </select>
+            </div>
+            <div class="input-group full-width">
+              <label><i class="fas fa-file-invoice"></i> Payment reference / transaction ID <span class="required-star">*</span></label>
+              <input type="text" id="paymentRef" placeholder="e.g. MPESA-0758036006-2025" required>
+            </div>
+          </div>
+
+          <!-- payment proof note -->
+          <div class="payment-proof-note">
+            <i class="fas fa-info-circle"></i>
+            <span>Please send the $20 application fee to <strong>0758036006</strong> (mobile money) and enter the transaction ID above. Your application will be reviewed after payment verification.</span>
+          </div>
+
+          <!-- submit -->
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Submit application
+          </button>
+        </form>
+
+        <!-- subtle note -->
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1.2rem; text-align: center; opacity: 0.8;">
+          <i class="fas fa-lock" style="margin-right: 4px;"></i> Secure application. Payment required before submission.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer class="footer">
+    <p>© 2025 Jumia Careers. All rights reserved. <i class="fas fa-heart"></i> Built for demo purposes.</p>
+  </footer>
+
+  <!-- toast message element -->
+  <div id="toast" class="toast-message"></div>
+
+  <script>
+    (function() {
+      // ----- GET DOM ELEMENTS -----
+      const form = document.getElementById('jobApplicationForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const toast = document.getElementById('toast');
+      const fullName = document.getElementById('fullName');
+      const email = document.getElementById('email');
+      const phone = document.getElementById('phone');
+      const jobPosition = document.getElementById('jobPosition');
+      const paymentRef = document.getElementById('paymentRef');
+
+      // ----- HELPER: SHOW TOAST MESSAGE -----
+      function showToast(message, isError = false) {
+        toast.textContent = message;
+        toast.style.backgroundColor = isError ? '#b91c1c' : '#0b2c5c';
+        toast.style.borderLeftColor = isError ? '#f97316' : '#f68b1e';
+        toast.classList.add('show');
+        clearTimeout(window.toastTimeout);
+        window.toastTimeout = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 4500);
+      }
+
+      // ----- PRE-FILL JOB SELECT FROM "APPLY NOW" BUTTONS -----
+      const applyButtons = document.querySelectorAll('.apply-btn');
+      applyButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          const job = this.getAttribute('data-job');
+          if (job && jobPosition) {
+            // find option that matches exactly or use "Other"
+            let found = false;
+            for (let i = 0; i < jobPosition.options.length; i++) {
+              if (jobPosition.options[i].value === job) {
+                jobPosition.selectedIndex = i;
+                found = true;
+                break;
+              }
+            }
+            if (!found) {
+              // if exact not found, select "Other" (last option)
+              jobPosition.value = 'Other';
+            }
+            // scroll to form smoothly
+            document.getElementById('application-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            showToast(`Applying for: ${job}. Please complete the form and pay $20.`, false);
+          }
+        });
+      });
+
+      // ----- FORM SUBMISSION HANDLER (with $20 payment validation) -----
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // gather values
+        const nameVal = fullName.value.trim();
+        const emailVal = email.value.trim();
+        const phoneVal = phone.value.trim();
+        const jobVal = jobPosition.value;
+        const refVal = paymentRef.value.trim();
+
+        // basic validation
+        if (!nameVal) {
+          showToast('Please enter your full name.', true);
+          fullName.focus();
+          return;
+        }
+        if (!emailVal || !emailVal.includes('@') || !emailVal.includes('.')) {
+          showToast('Please enter a valid email address.', true);
+          email.focus();
+          return;
+        }
+        if (!phoneVal) {
+          showToast('Please enter your phone number.', true);
+          phone.focus();
+          return;
+        }
+        if (!jobVal) {
+          showToast('Please select a job position.', true);
+          jobPosition.focus();
+          return;
+        }
+        if (!refVal) {
+          showToast('Please enter your payment reference / transaction ID.', true);
+          paymentRef.focus();
+          return;
+        }
+
+        // ----- PAYMENT SIMULATION: user must pay $20 to 0758036006 -----
+        // In a real scenario, you'd verify the transaction. Here we simply require
+        // a payment reference that contains "0758036006" OR any reference (since demo)
+        // BUT we want to explicitly ask user to pay. We'll enforce that the user has
+        // somehow acknowledged payment by requiring reference – we already check non-empty.
+        // For demonstration, we also check if the reference contains "0758036006" or not?
+        // We'll make it optional but show reminder toast if not. Yet to comply with "user should pay $20 
+        // before applying", we enforce a double-check: if they don't include 0758036006 in reference,
+        // we still accept but warn. But we want to make it realistic: ask user to pay first.
+        // Since it's a demo, we allow submission if payment ref is present.
+        // But we'll add a soft check: if the reference does NOT contain '0758036006', we'll still 
+        // proceed but show a confirmation that reminds them. 
+        // However the instruction says "user should pay 20$ before applying job to 0758036006"
+        // We'll enforce that the payment reference must include either the phone number or be explicit,
+        // but to avoid blocking, we'll check if it's at least 6 chars.
+        
+        if (refVal.length < 6) {
+          showToast('Please enter a valid transaction ID (at least 6 characters).', true);
+          paymentRef.focus();
+          return;
+        }
+
+        // Optional: Check if the reference contains the payment number (you can uncomment to enforce strictly)
+        // if (!refVal.includes('0758036006')) {
+        //   showToast('Please ensure you paid to 0758036006 and include the phone in reference.', true);
+        //   paymentRef.focus();
+        //   return;
+        // }
+
+        // If everything ok, disable button, simulate submission
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+        // simulate async request
+        setTimeout(() => {
+          // success message
+          showToast(`✅ Application submitted! $20 payment noted. We'll contact you soon.`, false);
+          
+          // reset form (optional)
+          form.reset();
+          // reset job select to placeholder
+          jobPosition.selectedIndex = 0;
+          
+          // re-enable button
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit application';
+
+          // scroll to top of form to see the toast or maybe not
+        }, 1800);
+      });
+
+      // ------ extra: if user clicks "Apply now" on nav, scroll to form -----
+      document.querySelector('.nav-cta').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('application-form').scrollIntoView({ behavior: 'smooth' });
+        showToast('Please complete the form and pay $20 to 0758036006.', false);
+      });
+
+      // ------ initialize any tooltips or dynamic year? not needed
+    })();
+  </script>
+
+  <!-- ensure that the phone placeholder appears nicely -->
+</body>
+</html>
